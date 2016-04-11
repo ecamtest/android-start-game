@@ -1,8 +1,12 @@
 package xyz.lurkin.startgame;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -13,13 +17,13 @@ public class GameView extends View {
 
     private Paint mPaint;
     private Ball mBall;
-
+    private final Bitmap test = BitmapFactory.decodeResource(getResources(),R.mipmap.bomb);
 
     public GameView(Context context, AttributeSet aSet) {
         super(context, aSet);
 
         mPaint = new Paint();
-        mBall = new Ball(20, 20, 10, 10, 10);
+        mBall = new Ball(60, 60, 50, 50, 20);
     }
 
     public void next() {
@@ -33,7 +37,7 @@ public class GameView extends View {
 
     @Override
     synchronized public void onDraw(Canvas canvas) {
-        canvas.drawCircle(mBall.x, mBall.y, mBall.radius, mPaint);
+        canvas.drawBitmap(test,mBall.x,mBall.y,mPaint);
     }
 
 }
